@@ -46,7 +46,7 @@ def co2_emissions_calculator(route_object): #This function calculates the CO2 em
     return(emissions)
 
 def eco_relative(route_object): #This function calculates the eco relative to car
-    car_co2_emmissions = co2_emissions_calculator(car_route_object) # list indexing for the car route object
+    car_co2_emmissions = co2_emissions_calculator(routes_list[0]) # list indexing for the car route object
     eco_relative = (co2_emissions_calculator(route_object) / car_co2_emmissions)*100
     return round(eco_relative)
 
