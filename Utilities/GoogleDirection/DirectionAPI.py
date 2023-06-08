@@ -46,7 +46,6 @@ class DirectionAPI:
         
         return routes_list
 
-        
 
     def sum_distance_by_mode(self, directions, mode, sub_modes=[]):
         total_distance = 0

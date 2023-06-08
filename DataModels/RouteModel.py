@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, Enum
+from sqlmodel import SQLModel, Enum, DateTime, Field
 from typing import Optional
 
 
@@ -31,6 +31,22 @@ class TransitModeEnum(Enum):
     tram = "TRAM"
     trolleybusa = "TROLLEYBUS"
 
+
+class RouteResponse(SQLModel):
+    mode: TravelModeEnum
+    arrival_time: Optional[DateTime] = None
+    total_time: Optional[DateTime] = None
+    walking_duration: Optional[int] = None
+    
+    walking_distance: Optional[int] = None
+    fare: Optional[int] = None
+    tokens: Optional[int] = None
+    health_benefit: Optional[int] = None
+    co2_emissions: Optional[float] = None
+    eco_relative_to_car: Optional[int] = None
+    score: Optional[float] = None
+
+
 class RouteModel(SQLModel):
     # id: int = Field(default=None, primary_key=True)
     mode: TravelModeEnum
@@ -52,7 +68,9 @@ class RouteModel(SQLModel):
     e_scooter_distance: Optional[int] = None
 
 
-    departure_time: Optional[int] = None
-    arrival_time: Optional[int] = None
+    departure_time: Optional[DateTime] = None
+    arrival_time: Optional[DateTime] = None
+    
 
+    response: Optional[RouteResponse] = None
 
