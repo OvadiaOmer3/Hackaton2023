@@ -74,6 +74,6 @@ def presentable_data(route_object, user):
 
     out_dict = {"mode": mode , "arrival_time": arrival_time, "total_time": total_time, "walking_distance": walking_distance, 
                 "walking_duration": walking_duration, "cost": cost, "tokens": tokens, "health_benefit": health_benefit, 
-                "co2_emissions": co2_emissions, "eco_relative_to_car": eco_relative_to_car , "score_change": score}
+                "co2_emissions": co2_emissions, "eco_relative_to_car": eco_relative_to_car , "score": score}
     
     return(out_dict)
