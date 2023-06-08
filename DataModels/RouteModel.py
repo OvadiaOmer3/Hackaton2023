@@ -22,5 +22,3 @@ class RouteModel(SQLModel):
     cycling_distance: Optional[int] = None
     departure_time: Optional[int] = None
     arrival_time: Optional[int] = None
-
-
