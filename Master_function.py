@@ -2,6 +2,17 @@ from GoogleDirection.DirectionAPI import DirectionAPI
 from Route_aggregation import presentable_data
 
 def rank_calculator(user):
+    rank = 1
+    if user.current_score in range(10,30):
+        rank = 2
+    elif user.current_score in range(30,50):
+        rank = 3
+    elif user.current_score in range(50,80):
+        rank = 4
+    elif user.current_score in range(80,100):
+        rank = 5
+
+    return(rank)
 
 
 origin = input("Enter origin: ")
@@ -21,5 +32,5 @@ chosen_route = input("Enter chosen route: ")
 # Now we need to update the user data
 current_user.current_score = chosen_route.presentable_data_dict["score"]
 current_user.past_relative_scores.append(tmp_dict["eco_relative_to_car"])
-current_user.rank = 
 current_user.tokens += chosen_route.presentable_data_dict["tokens"]
+current_user.rank = rank_calculator(current_user)
