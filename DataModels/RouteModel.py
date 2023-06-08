@@ -54,5 +54,3 @@ class RouteModel(SQLModel):
 
     departure_time: Optional[int] = None
     arrival_time: Optional[int] = None
-
-
