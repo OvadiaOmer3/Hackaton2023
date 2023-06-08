@@ -1,5 +1,6 @@
-from GoogleDirection.DirectionAPI import DirectionAPI
+from Utilities.GoogleDirection.DirectionAPI import DirectionAPI
 from Route_aggregation import presentable_data
+from DataModels.UserModel import User
 
 def rank_calculator(user):
     rank = 1
