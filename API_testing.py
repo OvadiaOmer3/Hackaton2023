@@ -12,4 +12,4 @@ def get_route_info(mode, origin, destination):
 
     return(data)
 
-get_route_info("transit", origin= "tel+aviv+university", destination= "rabin+square+tel+aviv")
+get_route_info(mode= "bicycling",origin= "tel+aviv+rabin+square", destination= "bugrashov+beach+tel+aviv")
