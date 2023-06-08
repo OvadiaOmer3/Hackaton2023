@@ -22,3 +22,4 @@ chosen_route = input("Enter chosen route: ")
 current_user.current_score = chosen_route.presentable_data_dict["score"]
 current_user.past_relative_scores.append(tmp_dict["eco_relative_to_car"])
 current_user.rank = 
+current_user.tokens += chosen_route.presentable_data_dict["tokens"]
