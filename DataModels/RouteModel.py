@@ -63,7 +63,7 @@ class RouteModel(SQLModel):
     train_distance: Optional[int] = None
     cycling_distance: Optional[int] = None
     
-    # Not yet implemented
+    # Not yet implemented not found in google maps api
     taxi_distance: Optional[int] = None
     e_scooter_distance: Optional[int] = None
 

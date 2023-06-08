@@ -12,6 +12,7 @@ class DirectionAPI:
 
     def get_directions(self, origin, destination):
         routes_list = []
+        # FIX!!!: This is not the correct way to do this
         for mode in TravelModeEnum:
             directions_result = self.gmaps.directions(origin, 
                                                       destination,
