@@ -1,8 +1,9 @@
-from sqlmodel import SQLModel, Enum
+from pydantic import BaseModel
+from enum import Enum
 from typing import Optional
 
 
-class User(SQLModel):
+class User(BaseModel):
     id_key: int
     username: str
     password: str
@@ -12,6 +13,6 @@ class User(SQLModel):
 
     rank: int
     current_score: float
-    past_relavtive_scores: list
+    trips_count: int
     tokens: int
     total_completed_trips: int

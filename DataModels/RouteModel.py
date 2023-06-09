@@ -1,14 +1,14 @@
-from sqlmodel import SQLModel, Enum, DateTime, Field
+from pydantic import BaseModel
+from datetime import datetime as DateTime
 from typing import Optional
-
-
+from enum import Enum
 
 
 class TravelModeEnum(Enum):
-    driving = "DRIVING"
-    walking = "WALKING"
-    bicycling = "BICYCLING"
-    transit = "TRANSIT"
+    driving = "driving"
+    walking = "walking"
+    bicycling = "bicycling"
+    transit = "transit"
 
 
 class TransitModeEnum(Enum):
@@ -32,7 +32,7 @@ class TransitModeEnum(Enum):
     trolleybusa = "TROLLEYBUS"
 
 
-class RouteResponse(SQLModel):
+class RouteResponse(BaseModel):
     mode: TravelModeEnum
     arrival_time: Optional[DateTime] = None
     total_time: Optional[DateTime] = None
@@ -47,7 +47,7 @@ class RouteResponse(SQLModel):
     score: Optional[float] = None
 
 
-class RouteModel(SQLModel):
+class RouteModel(BaseModel):
     # id: int = Field(default=None, primary_key=True)
     mode: TravelModeEnum
     distance: int
@@ -57,15 +57,15 @@ class RouteModel(SQLModel):
     fare: Optional[int] = None
     walking_duration: Optional[int] = None
     
-    walking_distance: Optional[int] = None
-    bus_distance: Optional[int] = None
-    car_distance: Optional[int] = None
-    train_distance: Optional[int] = None
-    cycling_distance: Optional[int] = None
+    walking_distance: Optional[int] = 0
+    bus_distance: Optional[int] = 0
+    car_distance: Optional[int] = 0
+    train_distance: Optional[int] = 0
+    cycling_distance: Optional[int] = 0
     
     # Not yet implemented not found in google maps api
-    taxi_distance: Optional[int] = None
-    e_scooter_distance: Optional[int] = None
+    taxi_distance: Optional[int] = 0
+    e_scooter_distance: Optional[int] = 0
 
 
     departure_time: Optional[DateTime] = None
