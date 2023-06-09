@@ -16,7 +16,10 @@ class DB:
         self.users.set_index("id_key", inplace=True)
         self.users.index = self.users.index.astype(int)
         self.users.sort_index(inplace=True)
-        self.users.drop(columns=["Unnamed: 0"], inplace=True)
+        try:
+            self.users.drop(columns=["Unnamed: 0"], inplace=True)
+        except KeyError:
+            pass
 
     def get_user(self, id_key: int) -> User:
         user = self.users.loc[id_key]
@@ -27,7 +30,7 @@ class DB:
         self.users.to_csv("DataModels/Users.csv")
 
     def update_user(self, user: User):
-        self.users.loc[user.id_key] = user.to_dict()
+        self.users.loc[user.id_key] = user.dict()
         self.users.to_csv("DataModels/Users.csv")
 
     def get_all_users(self) -> List[User]:
