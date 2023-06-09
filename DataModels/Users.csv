@@ -1,11 +1,11 @@
-,id_key,username,password,fullname,age,rank,current_score,trips_count,tokens,total_completed_trips
-0,0,user0,pass0,User 0,20,3,57,1,5,0
-1,1,user1,pass1,User 1,21,3,29,50,10,0
-2,2,user2,pass2,User 2,22,3,95,55,235,0
-3,3,user3,pass3,User 3,23,3,14,10,14,0
-4,4,user4,pass4,User 4,24,2,95,39,90,0
-5,5,user5,pass5,User 5,25,2,51,100,8,0
-6,6,user6,pass6,User 6,26,2,72,1000,0,0
-7,7,user7,pass7,User 7,27,2,22,14,15,0
-8,8,user8,pass8,User 8,28,4,63,500,100,0
-9,9,user9,pass9,User 9,29,3,70,1200,29,0
+id_key,username,password,fullname,age,rank,current_score,trips_count,tokens,total_completed_trips
+0,user0,pass0,User 0,20,3,57.0,1,5,0
+1,user1,pass1,User 1,21,3,29.0,50,10,0
+2,user2,pass2,User 2,22,3,95.0,55,235,0
+3,user3,pass3,User 3,23,5,87.0,11,364,0
+4,user4,pass4,User 4,24,1,94.70967741935485,40,836,0
+5,user5,pass5,User 5,25,1,52.58064516129032,101,8,0
+6,user6,pass6,User 6,26,1,72.90322580645162,1001,20,0
+7,user7,pass7,User 7,27,2,22.0,14,15,0
+8,user8,pass8,User 8,28,1,60.96774193548387,501,100,0
+9,user9,pass9,User 9,29,3,70.0,1200,29,0

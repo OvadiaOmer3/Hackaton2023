@@ -3,6 +3,7 @@ from Utilities.DB.DB_mock import DB
 from Utilities.GoogleDirection.RouteFilter import filter_routes
 from Route_aggregation import presentable_data
 from DataModels.UserModel import User
+from DataModels.DirectionModel import DirectionRequest, DirectionResponse
 
 
 def rank_calculator(user):
@@ -19,21 +20,25 @@ def rank_calculator(user):
     return(rank)
 
 
-def main(origin: str, destination: str, user_id: int):
+def main(direction_request: DirectionRequest):
     db = DB()
-    user = db.get_user(user_id)
-    routes_list = DirectionAPI().get_directions(origin, destination)
+    user = db.get_user(direction_request.user_id)
+    routes_list = DirectionAPI().get_directions(direction_request.origin, direction_request.destination)
 
     routes_list = filter_routes(routes_list)
 
+    response = DirectionResponse(user_id=direction_request.user_id,
+                                 request=direction_request,
+                                 routes=[])
+    
     for i, r in enumerate(routes_list):
         # routes_list[0] should be the car route
-        tmp_response = presentable_data(r, routes_list[0], user)
-        r.response = tmp_response
-        print(f"Route {i}: {tmp_response}")
+        r.response = presentable_data(r, routes_list[0], user)
+        response.routes.append(r.response)
 
+    print(response.json(indent=4))    
 
-    print(f"Routes Count: {len(routes_list)}")
+    print(f"\nRoutes Count: {len(routes_list)}")
 
     # Now the user have all the routes data and he can choose the route he wants to take
     chosen_route = routes_list[int(input("Enter chosen route index: "))]
@@ -45,15 +50,17 @@ def main(origin: str, destination: str, user_id: int):
 
     user.rank = rank_calculator(user)
 
+    db.update_user(user=user)
+
 
 # if __name__ == "__main__":
-#     origin = "Haifa"
-#     destination = "Ashdod"
+#     origin = "Tel Aviv University"
+#     destination = "Rabin Square, Tel Aviv-Yafo"
 #     current_user_id = 2
-#     main(origin, destination, current_user_id)
+#     main(direction_request=DirectionRequest(user_id=current_user_id, origin=origin, destination=destination))
 
 if __name__ == "__main__":
     origin = input("Enter origin: ")
     destination = input("Enter destination: ")
     current_user_id = int(input("Enter user id: "))
-    main(origin, destination, current_user_id)
+    main(direction_request=DirectionRequest(user_id=current_user_id, origin=origin, destination=destination))
